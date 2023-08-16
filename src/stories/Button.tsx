@@ -22,6 +22,8 @@ interface ButtonProps {
    * Optional click handler
    */
   onClick?: () => void;
+
+  shape?: 'square' | 'rounded' | 'round'
 }
 
 /**
@@ -31,14 +33,16 @@ export const Button = ({
   primary = false,
   size = 'medium',
   backgroundColor,
+  shape = 'rounded',
   label,
   ...props
 }: ButtonProps) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={['storybook-button', `storybook-button--${size}`, `storybook-button--${shape}`, mode].join(' ')}
       style={{ backgroundColor }}
       {...props}
     >
